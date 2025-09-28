@@ -77,9 +77,86 @@ ScrollTrigger.create({
             gsap.set(marquee, { opacity: 0 });
         }
 
+        if (progress >= 1 && introCard.contentRevealed) {
+          introCard.contentRevealed = true;
+          animateContentIn(titleChars, description);
+      }
+
+        if (progress < 1 && introCard.contentRevealed) {
+          introCard.contentRevealed = false;
+          animateContentOut(titleChars, description);
+      }
         
 
 
         },
     });
+
+    cards.forEach((card, index) => {
+    const isLastCard = index === cards.length - 1;
+    ScrollTrigger.create({
+    trigger: card,
+    start: "top top",
+    end: isLastCard ? "+=100vh" : "top top",
+    endTrigger: isLastCard ? null : cards[cards.length - 1],
+    pin: true,
+    pinSpacing: isLastCard,
+    });
+
+  });
+
+  cards.forEach((card, index) => {
+    if (index < cards.length - 1) {
+        const cardWrapper = card.querySelector(".card-wrapper");
+        ScrollTrigger.create({
+            trigger: cards[index + 1],
+            start: "top bottom",
+            end: "top top",
+            onUpdate: (self) => {
+                const progress = self.progress;
+                gsap.set(cardImgWrapper, {
+                    scale: 1 - progress * 0.25,
+                    opacity: 1 - progress,
+                });
+            },
+        });
+    }
+});
+
+
+      cards.forEach((card, index) => {
+    if (index > 0) {
+        const cardImg = card.querySelector(".card-img img");
+        const imgContainer = card.querySelector(".card-img");
+        ScrollTrigger.create({
+            trigger: card,
+            start: "top bottom",
+            end: "top top",
+            onUpdate: (self) => {
+                const progress = self.progress;
+                gsap.set(cardImg, {scale: 2 - progress });
+                gsap.set(imgContainer,{borderRadius: 150 -progress * 125 + "px"});
+
+            },
+        });
+    }
+});
+
+
+      cards.forEach((card, index) => {
+    if (index === 0) return;
+
+    const cardDescription = card.querySelector(".card.description");
+    const cardTitleChars = card.querySelectorAll(".char span");
+
+    ScrollTrigger.create({
+        trigger: card,
+        start: "top top",
+        onEnter: () => animateContentIn(cardTitleChars, cardDescription),
+        onLeaveBack: () => animateContentOut(cardTitleChars, cardDescription),
+    });
+});
+
+  setupMarqueeAnimation();
+  
 });
