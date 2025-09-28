@@ -137,3 +137,35 @@ section {
   transform: translateX(40px);
   opacity: 0;
 }
+
+.card:nth-child(2) {
+  margin-top: 50vh;
+}
+
+.char {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.char span {
+  transform: translateX(100%);
+  display: inline-block;
+  will-change: transform;
+
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 0;
+  }
+
+  .intro h1, .outro h1 {
+    width: 100%;
+  }
+
+  .card-content .card-description {
+    width: 90%;
+  }
+}
