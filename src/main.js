@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cardImgWrapper = introCard.querySelector(".card-img");
   const cardImg = introCard.querySelector(".card-img img");
-  if (cardImgWrapper) gsap.set(cardImgWrapper, { scale: 0.5, borderRadius: "400px" });
-  if (cardImg) gsap.set(cardImg, { scale: 1.5 });
+  if (cardImgWrapper) gsap.set(cardImgWrapper, { scale: 0.5, borderRadius: "300px" });
+  if (cardImg) gsap.set(cardImg, { scale: 0.5 , borderRadius: "300px"});
 
 
   function animateContentIn(titleChars, description) {
