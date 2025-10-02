@@ -42,13 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cardImgWrapper = introCard.querySelector(".card-img");
   const cardImg = introCard.querySelector(".card-img img");
-  if (cardImgWrapper) gsap.set(cardImgWrapper, { scale: 0.5, borderRadius: "300px" });
-  if (cardImg) gsap.set(cardImg, { scale: 0.5 , borderRadius: "300px"});
+  if (cardImgWrapper) gsap.set(cardImgWrapper, { scale: 0.5, borderRadius: "400px" });
+  if (cardImg) gsap.set(cardImg, { scale: 0.5 , borderRadius: "400px"});
 
 
   function animateContentIn(titleChars, description) {
     if (titleChars && titleChars.length !== 0) {
-      gsap.to(titleChars, { x: "0%", duration: 0.75, ease: "power4.out", stagger: 0.02 });
+      gsap.to(titleChars, { x: "0%", duration: 0.75, ease: "power4.out", stagger: 0.09 });
     }
     if (description) {
       gsap.to(description, {
