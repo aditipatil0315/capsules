@@ -28,7 +28,7 @@ h1 {
 }
 
 h2 {
-  line-height: 1.01;
+  line-height: 1.0;
 }
 
 p{
@@ -108,6 +108,7 @@ section {
   height: 100%;
   border-radius: 150px;
   overflow: hidden;
+  color: darkblue;
 }
 
 .card-img img {
@@ -181,7 +182,7 @@ section {
   display: flex;
   align-items: flex-end;
   padding: 0;
-    border-bottom: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
 
 }
 
@@ -194,7 +195,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 50px 30px 30px;
+  padding: 20px 50px 0px 20px;
   color: #EFDA8D;
   z-index: 100;
 
@@ -202,17 +203,21 @@ section {
 
 ul li {
   list-style: none;
-  gap: 3px;
+  gap: 5px;
   font-weight: 400;
   font-size: 16.px;
   color: #EFDA8D;
   cursor: pointer;
+  margin-bottom: 3px;
+
 }
 
 a {
   text-decoration: none;
   color: #EFDA8D;
   font-size: 500;
+  gap: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .display {
@@ -244,8 +249,9 @@ a {
   top: 60%;
   width: 100%;
   height: 30%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
   z-index: 20;
+  cursor: pointer;
 
 }
 
@@ -266,19 +272,20 @@ a {
   top: 20%;
   width: 100%;
   height: 30%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .outer .left:hover, .inner .left:hover {
   opacity: 1;
   transform: scale(1.05);
-  transform: rotateZ(-15deg);
+  transform: rotateZ(-10deg);
 }
 
 .outer .right:hover, .inner .right:hover {
   opacity: 1;
   transform: scale(1.05);
-  transform: rotateZ(15deg);
+  transform: rotateZ(10deg);
 }
 
 .middle {
