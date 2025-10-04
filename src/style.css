@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 
 * {
   padding: 0;
@@ -7,9 +9,12 @@
   box-sizing: border-box;
 }
 
+
+
 body {
   font-family: Montserrat;
   overflow-x: hidden;
+  color: aliceblue;
 }
 
 img {
@@ -18,6 +23,10 @@ img {
   height: 100%;
   object-fit: cover;
   will-change: transform;
+}
+
+span {
+  font-family: Arimo;
 }
 
 h1 {
@@ -35,6 +44,19 @@ p{
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.25;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
 }
 
 section {
@@ -115,7 +137,7 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* dark tint overlay */
+  background: rgba(0, 0, 0, 0.7); /* dark tint overlay */
   border-radius: inherit;
   z-index: 1;
   pointer-events: none; /* ensures it doesn’t block interactions */
@@ -134,6 +156,15 @@ section {
   align-items: flex-end;
   justify-content: center;
   z-index: 10;
+}
+
+.services-bottom {
+  /* height: 90%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .card-content .card-title {
@@ -190,11 +221,23 @@ section {
 /* adding other elements styles */
 
 .intro {
+  position: relative;
   display: flex;
   align-items: flex-end;
   padding: 0;
   border-bottom: 1px solid darkgray;
 
+}
+
+.intro .main-img {
+  position: absolute;
+  /* width: 20%; */
+  /* height: 100%; */
+  z-index: 10;
+  top: 17%;
+  left: 35%;
+  object-fit: cover;
+  opacity: 0.5;
 }
 
 .intro nav{
@@ -211,6 +254,7 @@ section {
   z-index: 100;
 
 }
+
 
 ul li {
   list-style: none;
@@ -314,19 +358,20 @@ a {
 .middle_content {
   position: absolute;
   width: 100%;
-  top: 70%;
+  top: 60%;
   /* left: 5%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .display h3 {
   width: 100%;
   font-size: 5rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
 
   /* margin-bottom: 20px; */
@@ -338,4 +383,133 @@ a {
   width: 100%;
   text-align: center;
   line-height: 1.5;
+}
+
+
+/* Section Base */
+.services {
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  color: #EFDA8D;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+}
+
+/* Card Layout */
+.service-cards {
+  display: flex;
+  flex-direction: row;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Card Container */
+.service-card {
+  perspective: 1000px;
+  width: 250px;
+  height: 350px;
+}
+
+/* Inner Flip Container */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+/* Flip Animation */
+.service-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back Faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: 1px solid lightgray;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  
+  padding: 1.5rem;
+}
+
+.card-front {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Front */
+.card-front h3 {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* Back */
+.card-back {
+  transform: rotateY(180deg);
+  background: rgba(0, 0, 0, 0.731);
+  /* background: rgba(30, 30, 30, 0.461); */
+    backdrop-filter: blur(10px);
+
+}
+
+/* Optional subtle idle float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Apply the float animation only when not hovered */
+.service-card:not(:hover) {
+  animation: float 3s ease-in-out infinite;
+}
+
+.card-back ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.card-back li {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .service-card {
+    width: 220px;
+    height: 300px;
+  }
+  .card-front h3 {
+    font-size: 1.25rem;
+  }
+  .card-back li {
+    font-size: 0.9rem;
+  }
 }
